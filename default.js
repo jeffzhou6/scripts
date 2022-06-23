@@ -1,4 +1,4 @@
-document.body.innerHTML = "<h1>test</h1>"
+alert(1111)
 /************** common类js start ********************/
 // 模拟 C# 的 Request.QueryString
 function Request(name, bubble) {
