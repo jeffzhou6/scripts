@@ -1,3 +1,4 @@
+alert(111)
 /************** common类js start ********************/
 // 模拟 C# 的 Request.QueryString
 function Request(name, bubble) {
