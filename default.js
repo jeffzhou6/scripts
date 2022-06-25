@@ -1389,7 +1389,7 @@ function onekey(roomid) {
     localStorage.setItem("areaname", json.areaname);  //当前单位是否有预售证
 
     setTimeout(function () { }, Math.random() * 500);
-    switch ("1") {
+    switch (json.buttoninfo) {
         case "1":
             var is_rg = json.is_rg;
             var hasysxkz = json.hasysxkz;
@@ -1757,12 +1757,13 @@ function initChooseBox() {
 
     var url = "AJAX/GetChooseInfo.ashx?roomid=" + escape(roomid);
     // var json = ajax(url);
+    // if (!json) { Wait.Hide(); return; }
+
     json = {
         ret: 0,
         chooseinfo: "test",
         openpoint: 1,
     }
-    // if (!json) { Wait.Hide(); return; }
     // if (json.ret == 1) {
     //     document.getElementById("divButton").innerText = GetLangValue("返 回");
     //     document.getElementById("divInfo").innerHTML = GetLangValue(json.info);
@@ -1785,7 +1786,7 @@ function initChooseBox() {
         document.getElementById("divButton").setAttribute("onclick", "yesclick()");
     }
 
-    
+
     var btnHeight = document.getElementById("divButton").clientHeight;
     var titleHeight = document.getElementById("divTitle").clientHeight;
     screenFix("height", "divMain", btnHeight + titleHeight+10);
@@ -1959,6 +1960,7 @@ function initDjPay() {
         var url = "AJAX/GetSuccessMsg.ashx?roomid=" + escape(roomid);
         var json = ajax(url);
         document.getElementById("divInfo").innerHTML = getMultiResult(json.info);
+        document.getElementById("divButton").style.display = "none";
         document.getElementById("divButton").textContent = GetLangValue("确 定");
         document.getElementById("divButton").setAttribute("onclick", "goToDetail(\'" + roomid + "\')");
 
