@@ -1756,7 +1756,7 @@ function initChooseBox() {
     var roomid = Request("roomid");
 
     var url = "AJAX/GetChooseInfo.ashx?roomid=" + escape(roomid);
-    var json = ajax(url);
+    // var json = ajax(url);
     json = {
         ret: 0,
         chooseinfo: "test",
@@ -1858,12 +1858,12 @@ function yesclick() {
     if (openpoint == 1) {
         OpenDlg(sWebRoot+"HtmlControl/HDYZM/Test.aspx", 300, 320, "验证码", function (re) {
             if (re.length > 0) {
-                lastBuy(re);
+                // lastBuy(re);
             }
         });
     }
     else {
-        lastBuy("");
+        // lastBuy("");
     }    
 }
 
