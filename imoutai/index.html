@@ -1,0 +1,1186 @@
+<!DOCTYPE html style="font-size: 54px;">
+<html class="no-js">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>商品详情</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="yes" name="apple-touch-fullscreen" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <style>
+      .skelon {
+        width: 100%;
+        height: .32rem;
+        list-style: none;
+        background: rgba(190, 190, 190, .2);
+        border-radius: .1rem;
+      }
+      .skelon-circle {
+        display: inline-block;
+        vertical-align: top;
+        background: rgba(190, 190, 190, .2);
+        width: 0.8rem;
+        height: 0.8rem;
+        border-radius: 20%;
+      }
+    </style>
+    <link rel="stylesheet" href="//fe.moutai519.com.cn/mt-frontend/hxm/mt-wap/style-32457b11b66eda6946c9.css" type="text/css" />
+    <link rel="dns-prefetch" href="//fe.moutai519.com.cn">
+    <link rel="dns-prefetch" href="//static.moutai519.com.cn">
+    <link rel="dns-prefetch" href="//app.moutai519.com.cn">
+    <script>
+      (function() {
+        var check_webp_feature, store, storeResult, cache_key = 'YX_WEBP_FLAG_CACHE',
+          initialHandler;
+        window.yanxuan_webp_cache = {
+          'YX_WEBP_DETECT_FLAG': false,
+          'YX_WEBP_HAS_DETECT': false
+        };
+        check_webp_feature = function(feature, callback) {
+          var kTestImages = {
+            lossy: 'UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoBAAEADsD+JaQAA3AAAAAA'
+          };
+          var img = new Image();
+          img.onload = function() {
+            var result = (img.width > 0) && (img.height > 0);
+            callback(feature, result);
+          };
+          img.onerror = function() {
+            callback(feature, false);
+          };
+          img.src = 'data:image/webp;base64,' + kTestImages[feature];
+        };
+        initialHandler = function(result) {
+          var htmlEle, htmlCls;
+          window.yanxuan_webp_cache.YX_WEBP_DETECT_FLAG = result;
+          window.yanxuan_webp_cache.YX_WEBP_HAS_DETECT = true;
+          if (result) {
+            // 先缓存判断结果
+            store && store.set(result);
+            htmlEle = document.getElementsByTagName('html')[0];
+            htmlCls = htmlEle.getAttribute('class');
+            htmlEle.setAttribute('class', htmlCls + ' webp');
+          }
+        };
+        if (window.localStorage) {
+          store = {
+            get: function() {
+              return window.localStorage.getItem(cache_key);
+            },
+            set: function(result) {
+              window.localStorage.setItem(cache_key, result);
+            }
+          };
+          storeResult = store.get();
+          if (storeResult) {
+            initialHandler(storeResult === 'true' ? true : false)
+          } else {
+            check_webp_feature('lossy', function(feature, result) {
+              initialHandler(result)
+            });
+          }
+        } else {
+          check_webp_feature('lossy', function(feature, result) {
+            initialHandler(result)
+          });
+        }
+      }());
+    </script>
+    <link rel="stylesheet" href="//fe.moutai519.com.cn/mt-frontend/hxm/mt-wap/mt/item/detail/index-584a291657b84c6cd9c7.css">
+    <script>
+      ! function(win, lib) {
+        var flexible = lib.flexible || (lib.flexible = {});
+        function a() {
+          if (parseInt(document.documentElement.clientWidth) > 720) {
+            document.documentElement.style.fontSize = 720 / 7.5 + "px";
+          } else {
+            document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + "px";
+          }
+        }
+        var b = null;
+        flexible.dpr = 1;
+        flexible.rem = 100;
+        flexible.rem2px = function(d) {
+          var val = parseFloat(d * 75 / 100) * this.rem;
+          if (typeof d === 'string' && d.match(/rem$/)) {
+            val += 'px';
+          }
+          return val;
+        }
+        flexible.px2rem = function(d) {
+          var val = parseFloat(d) / this.rem;
+          if (typeof d === 'string' && d.match(/px$/)) {
+            val += 'rem';
+          }
+          return val;
+        }
+        win.addEventListener("resize", function() {
+          clearTimeout(b);
+          b = setTimeout(a, 300);
+        }, !1);
+        a();
+      }(window, window['lib'] || (window['lib'] = {}));
+      (function() {
+        if (typeof window.WeixinJSBridge == "object" && typeof window.WeixinJSBridge.invoke == "function") {
+          handleFontSize();
+        } else {
+          document.addEventListener("WeixinJSBridgeReady", handleFontSize, false);
+        }
+        function handleFontSize() {
+          window.WeixinJSBridge.invoke('setFontSizeCallback', {
+            'fontSize': 0
+          });
+          window.WeixinJSBridge.on('menu:setfont', function() {
+            window.WeixinJSBridge.invoke('setFontSizeCallback', {
+              'fontSize': 0
+            });
+          });
+        }
+      })();
+    </script>
+    <script>
+      window.environment = 'online';
+    </script>
+    <script type="text/javascript">
+      (function(win) {
+        win.__yx = {};
+        function getUrlSuffix() {
+          return window.environment === 'development' ? '.json' : '';
+        }
+        function getStaticPrefix() {
+          if (window.environment === 'development') {
+            return '';
+          }
+          if (window.environment === 'online') {
+            return 'https://static.moutai519.com.cn/mt-backend';
+          }
+          return 'https://obs-gzgy.woyun.cn/mt-backend-test';
+        }
+        // npm qs.queryStringify
+        function queryStringify(obj, prefix) {
+          var has = Object.prototype.hasOwnProperty;
+          var pairs = [];
+          for (var key in obj) {
+            if (!has.call(obj, key)) {
+              continue;
+            }
+            var value = obj[key];
+            var enkey = encodeURIComponent(key);
+            var pair;
+            if (typeof value === 'object') {
+              pair = queryStringify(value, prefix ? prefix + '[' + enkey + ']' : enkey);
+            } else {
+              pair = (prefix ? prefix + '[' + enkey + ']' : enkey) + '=' + encodeURIComponent(value);
+            }
+            pairs.push(pair);
+          }
+          return pairs.join('&');
+        }
+        function urlQueryString(name) {
+          var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+          var r = win.location.search.substr(1).match(reg);
+          if (r != null) {
+            return r[2];
+          }
+          return undefined;
+        }
+        function getUrlParams() {
+          var _obj = {};
+          var _string = window.location.search.replace('?', '');
+          _paramString = _string.split('&');
+          for (var i = 0; i < _paramString.length; i++) {
+            var _name = _paramString[i];
+            var _brr = _name.split('=');
+            if (!_brr || !_brr.length) continue;
+            var _key = _brr.shift();
+            if (!_key) return;
+            try {
+              _obj[decodeURIComponent(_key)] =
+                decodeURIComponent(_brr.join('='));
+            } catch (err) {
+              _obj[_key] = _brr.join('=');
+            }
+          }
+          return _obj;
+        }
+        function urlQueryAppend(url, name, value) {
+          var _url = url.indexOf('?', url.indexOf('?') + 1) < 0 ? url : url.slice(0, url.indexOf('?', url.indexOf('?') + 1));
+          var _regx = /(\S{1,})\?([^?]*)(#|$)/;
+          var _searchRegx = new RegExp('(^|&)' + name + '(=[^&^#^=]*)?(&|#|$)');
+          var _regxResult = _url.match(_regx);
+          var _search = _regxResult ? _regxResult[2] : '';
+          var _name = value !== undefined ? name + '=' + value : name;
+          var _newSearch = !_searchRegx.test(_search) ? (_name + (!_search ? '' : '&') + _search) : _search.replace(_searchRegx, '$1' + _name + '$3');
+          return !_regxResult ? _url.replace(/([^#]*)([\S]*)/, '$1?' + _newSearch + '$2') : (_regxResult[1] + '?' + _newSearch);
+        };
+        function getCookie(name) {
+          if (document.cookie) {
+            var r = new RegExp('(^|;|\\s+)' + name + '=([^;]*)(;|$)')
+            var m = document.cookie.match(r)
+            return (!m ? '' : unescape(m[2]))
+          }
+          return null;
+        }
+        var strHashCode = function(str) {
+          var hash = 0,
+            i, chr;
+          if (str.length === 0) return hash;
+          for (var i = 0; i < str.length; i++) {
+            chr = str.charCodeAt(i);
+            hash = ((hash << 5) - hash) + chr;
+            hash |= 0; // Convert to 32bit integer
+          }
+          return hash;
+        };
+        var generatorKeyCode = function(json) {
+          var key = -1;
+          var jsonStr;
+          if (!json) return key;
+          var params = json.params;
+          if (params && Object.prototype.toString(params) === '[object Object]') {
+            json.params = JSON.parse(JSON.stringify(params, Object.keys(json.params).sort()));
+          }
+          jsonStr = JSON.stringify(json);
+          key = strHashCode(jsonStr);
+          return key;
+        }
+        win.__yx.cachePool = {
+          cache: {},
+          get: function(opts) {
+            var url = opts.url;
+            var params = opts.params;
+            var onSuccess = opts.onSuccess;
+            var onTimeout = opts.onTimeout;
+            var onFail = opts.onFail;
+            var successCallback = onSuccess || function() {};
+            var timeoutCallback = onTimeout || function() {};
+            // 即使取数没有匹配上 也不会白屏
+            var failCallback = onFail || function() {};
+            var timeout = opts.timeout || 3000;
+            var keySource = {
+              interface: url,
+              params: params
+            }
+            var key = generatorKeyCode(keySource);
+            var me = this;
+            var pollTimer;
+            var clearPollTimer = function(cb) {
+              if (pollTimer) {
+                clearTimeout(pollTimer);
+                pollTimer = null;
+                typeof cb === 'function' && cb();
+              }
+            }
+            var getCache = function() {
+              // 没有全匹配参数 失败
+              if (!me.cache.hasOwnProperty(key)) {
+                clearPollTimer();
+                failCallback();
+                return;
+              }
+              var dd = me.cache[key];
+              // 成功
+              if (dd) {
+                clearPollTimer();
+                successCallback(dd);
+                delete me.cache[key];
+                return;
+              }
+              // 轮训等待
+              pollTimer = setTimeout(getCache, 20);
+            }
+            getCache();
+            // 超时
+            setTimeout(function() {
+              clearPollTimer(timeoutCallback);
+            }, timeout);
+          },
+          set: function(url, params, result) {
+            var keySource = {
+              interface: url,
+              params: params
+            }
+            var key = generatorKeyCode(keySource);
+            this.cache[key] = result;
+          },
+          // 预设坑位
+          preset: function(url, params) {
+            var keySource = {
+              interface: url,
+              params: params
+            }
+            var key = generatorKeyCode(keySource);
+            this.cache[key] = null;
+          },
+          // 跟preset相反
+          revertSet: function(url, params) {
+            var keySource = {
+              interface: url,
+              params: params
+            }
+            var key = generatorKeyCode(keySource);
+            delete this.cache[key];
+          }
+        }
+        function ajax(request) {
+          var empty = function() {};
+          var jsonType = 'application/json';
+          var htmlType = 'text/html';
+          var scriptTypeRE = /^(?:text|application)\/javascript/i;
+          var xmlTypeRE = /^(?:text|application)\/xml/i;
+          var headers = {};
+          var setHeader = function(name, value) {
+            headers[name.toLowerCase()] = value
+          };
+          function mimeToDataType(mime) {
+            if (mime) mime = mime.split(';', 2)[0]
+            return mime && (mime == htmlType ? 'html' :
+              mime == jsonType ? 'json' :
+              scriptTypeRE.test(mime) ? 'script' :
+              xmlTypeRE.test(mime) && 'xml') || 'text'
+          }
+          var ajaxSettings = {
+            method: 'GET',
+            success: empty,
+            error: empty,
+            accepts: {
+              script: 'text/javascript, application/javascript, application/x-javascript',
+              json: jsonType,
+              xml: 'application/xml, text/xml',
+              html: htmlType,
+              text: 'text/plain'
+            },
+            // Whether the request is to another domain
+            crossDomain: false,
+            // Default timeout
+            timeout: 5000,
+            ignoreCode: false
+          }
+          var settings = request || {};
+          for (var key in ajaxSettings)
+            if (settings[key] === undefined) settings[key] = ajaxSettings[key]
+          var method = settings.method;
+          var url = settings.url;
+          var postData;
+          var success = settings.success;
+          var error = settings.error;
+          var contentType = settings.contentType;
+          var dataType = settings.dataType;
+          var type = "JSON";
+          // 前后端分离有些接口不规范 返回值没有code 
+          var ignoreCode = settings.ignoreCode;
+          var options = request.options || {};
+          // set header start
+          if (method.toUpperCase() === 'POST') {
+            contentType = contentType || 'application/x-www-form-urlencoded';
+            postData = type === 'JSON' ? JSON.stringify(settings.data) : queryStringify(settings.data);
+          } else {
+            contentType = contentType || jsonType;
+          }
+          setHeader('content-type', contentType);
+          !options.useSimpleRequest && (headers['MT-APP-Version'] = '1.0.0');
+          if (!settings.crossDomain && !options.useSimpleRequest) setHeader('X-Requested-With', 'XMLHttpRequest');
+          var mime = settings.accepts[dataType];
+          // yx特色
+          setHeader('Accept', 'application/json, text/javascript, */*; q=0.01');
+          // set customized header
+          if (request.headers) {
+            for (var h in request.headers) {
+              setHeader(h, request.headers[h]);
+            }
+          }
+          // set header end
+          // init xhr
+          var xhr = new XMLHttpRequest();
+          xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) {
+              //只支持get post
+              var result = xhr.responseText;
+              // status 200 responseText才会有值
+              if (result) {
+                result = JSON.parse(result);
+                if (ignoreCode) {
+                  // 有global认为正常返回 
+                  if (result.global) {
+                    success(result);
+                  } else {
+                    error();
+                  }
+                } else if (result.code == '200' || result.code == '2000') {
+                  success(result);
+                } else {
+                  error();
+                }
+              } else {
+                error();
+              }
+            }
+          };
+          xhr.onerror = function() {}
+          xhr.ontimeout = function() {}
+          xhr.open(method, url, true);
+          xhr.timeout = settings.timeout;
+          for (var n in headers) xhr.setRequestHeader(n, headers[n]);
+          xhr.send(postData ? postData : null);
+        }
+        function __yxAjax(opts) {
+          if (!/^(https?:)?\/\//.test(opts.url)) { // 不带domain
+            if (window.environment === 'test') {
+              opts.url = `${location.protocol}//devh5.moutai519.com.cn` + opts.url;
+            } else if (window.environment === 'online') {
+              opts.url = 'https://h5.moutai519.com.cn' + opts.url;
+            }
+          }
+          var originUrl = opts.url;
+          var params = opts.data;
+          var success = opts.success;
+          var error = opts.error;
+          var method = opts.method || 'GET';
+          var options = opts.options || {};
+          win.__yx.cachePool.preset(originUrl, params);
+          opts.success = function(ret) {
+            win.__yx.cachePool.set(originUrl, params, ret);
+            typeof success === 'function' && success(ret);
+          }
+          opts.error = function() {
+            win.__yx.cachePool.revertSet(originUrl, params);
+            typeof error === 'function' && error(ret);
+          }
+          opts.dataType = 'json';
+          if (method === 'GET') {
+            if (params) {
+              for (var name in params) {
+                // 对接口参数值进行编码
+                opts.url = urlQueryAppend(opts.url, name, encodeURIComponent(params[name]));
+              }
+            }
+            //get请求击穿缓存
+            !options.noTimeStamp && (opts.url = urlQueryAppend(opts.url, '__timestamp', new Date().getTime()));
+          }
+          // 自动带上csrf_token
+          var token = getCookie('yx_csrf');
+          if (token) {
+            opts.url = urlQueryAppend(opts.url, 'csrf_token', token);
+          }
+          opts.headers = {
+            'x-csrf-token': getCookie('yx_csrf_node') || null
+          };
+          ajax(opts);
+        }
+        win.__yx.queryStringify = queryStringify;
+        win.__yx.urlQueryString = urlQueryString;
+        win.__yx.getUrlParams = getUrlParams;
+        win.__yx.getUrlSuffix = getUrlSuffix;
+        win.__yx.getStaticPrefix = getStaticPrefix;
+        win.__yx.ajax = __yxAjax;
+      })(window);
+    </script>
+    <script>
+      window.headerType = 2;
+      (function() {
+        if (window.__yx) {
+          var getUrlSuffix = window.__yx.getUrlSuffix;
+          var getStaticPrefix = window.__yx.getStaticPrefix;
+          var id = window.__yx.urlQueryString('id');
+          var yxAjax = window.__yx.ajax;
+          yxAjax({
+            url: getStaticPrefix() + '/xhr/front/mall/item/detail/' + id + getUrlSuffix(),
+            data: {},
+            method: 'GET',
+            options: {
+              useSimpleRequest: true,
+              noTimeStamp: true
+            }
+          });
+        }
+      })();
+    </script>
+    <script>
+      var YXStat = {};
+      YXStat.q = YXStat.q || [];
+      //设置pageview的event_name
+      window.CURRENTPAGE = 'goodsdetail';
+      (function() {
+        var done = false;
+        var stat = document.createElement('script');
+        stat.type = 'text/javascript';
+        stat.async = true;
+        stat.src = 'online' !== "online" ? 'https://fe.moutai519.com.cn/mt-frontend/vendor/stat.test.js' : 'https://fe.moutai519.com.cn/mt-frontend/vendor/stat.min.js';
+        stat.onload = stat.onreadystatechange = function() {
+          if (!done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete")) {
+            done = true;
+            var url = 'online' !== "online" ? "https://devdc.moutai519.com.cn/upload/mt-mall/event-tracking/web/v1" : "https://dc.moutai519.com.cn/upload/mt-mall/event-tracking/web/v1";
+            YXStat.init({
+              client_type: "wap",
+              url: url,
+              isAgent: true,
+              appLogSource: 'mth5'
+            });
+          }
+        };
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(stat, s);
+      })();
+    </script>
+    <script>
+      window.rwa_cache_switch = 'on';
+    </script>
+    <script>
+      ! function() {
+        "use strict";
+        var r, o, d, c, s, n, i, a = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(n) {
+          return typeof n
+        } : function(n) {
+          return n && "function" == typeof Symbol && n.constructor === Symbol && n !== Symbol.prototype ? "symbol" : typeof n
+        };
+        function u(n, i, t) {
+          try {
+            "id" in n && void 0 !== i && (c[n.id] = {
+              success_cb: i,
+              error_cb: t
+            }), window.NEJsbridge2 && ("string" == typeof n.params ? window.NEJsbridge2.invoke(n.id, n.method, n.params) : window.NEJsbridge2.invoke(n.id, n.method, JSON.stringify(n.params)))
+          } catch (n) {}
+        }
+        n = /android/i.test(navigator.userAgent), i = /moutaiapp/i.test(navigator.userAgent), n && i && !window.NEJsbridge && (void 0 === r && (r = function(n, i) {
+          var t = document.createEvent("Event");
+          return t.initEvent(n, !0, !0, i), t.detail = i, t
+        }), o = "2.0", d = 0, c = {}, (s = {
+          call: function(n, i, t, e) {
+            u({
+              jsonrpc: o,
+              method: n,
+              params: i,
+              id: d++
+            }, t, e)
+          },
+          notify: function(n, i) {
+            u({
+              jsonrpc: o,
+              method: n,
+              params: i,
+              id: d++
+            }, null, null)
+          },
+          onMessage: function(n) {
+            var i, t, e = n;
+            "object" === (void 0 === e ? "undefined" : a(e)) && "jsonrpc" in e && e.jsonrpc === o && ("result" in e && c[e.id] ? (i = c[e.id].success_cb, delete c[e.id], "function" == typeof i && i(e.result)) : "error" in e && c[e.id] && (t = c[e.id].error_cb, delete c[e.id], "function" == typeof t && t(e.error)))
+          },
+          invokeFinish: function() {},
+          echo: function(n) {
+            alert(n)
+          },
+          ready: function() {
+            s.notify("markNewJsBridge", "")
+          },
+          nativeEvent: {}
+        }).nativeEvent.Trigger = function(n, i) {
+          var t = r(n, i);
+          document.dispatchEvent(t)
+        }, s.nativeEvent.Trigger2 = function(n, i) {
+          var t, e = s.nativeEvent.has(n),
+            o = r(n, i);
+          document.dispatchEvent(o), e || (t = {
+            type: n,
+            detail: i
+          }, s.notify("trigger", JSON.stringify(t)))
+        }, window.NEJsbridge = {}, window.jsonRPC = s, window.NEJsbridge.invoke = s.call, window.NEJsbridge.call = s.notify, s.ready())
+      }();
+    </script>
+    <script>
+      (function() {
+        // 错误上报
+        function ready(cb) {
+          if (window.NEJsbridge) {
+            cb();
+          } else {
+            document.addEventListener('NEJsbridgeReady', cb, false);
+          }
+        }
+        function invoke() {
+          for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+          if (window.WebViewJavascriptBridge) {
+            var _window$WebViewJavasc;
+            return (_window$WebViewJavasc = window.WebViewJavascriptBridge).callHandler.apply(_window$WebViewJavasc, args);
+          } else {
+            ready(function() {
+              var _window$NEJsbridge;
+              (_window$NEJsbridge = window.NEJsbridge).invoke.apply(_window$NEJsbridge, args);
+            });
+          }
+        }
+        function isChosenDevice() {
+          var isChosenDevice = false;
+          try {
+            var deviceId = navigator.userAgent.match(/device-id\/(\w+)/)[1];
+            var num = Number(deviceId.slice(-1));
+            if (num === 0) {
+              isChosenDevice = true;
+            }
+          } catch (e) {}
+          return isChosenDevice;
+        }
+        window.environment === 'online' && window.addEventListener('error', function(e) {
+          if (e instanceof ErrorEvent) {
+            var colno = e.colno,
+              error = e.error,
+              filename = e.filename,
+              lineno = e.lineno,
+              message = e.message;
+            invoke('errorReport', {
+              msg: "\u3010FERuntimeError\u3011".concat(location.href, ' ').concat(filename, ": error in line ").concat(lineno, " at column ").concat(colno, ", msg: ").concat(message).concat(error && error.stack ? ', stack is ' + error.stack : '')
+            });
+          } else {
+            var resourceUrl = e.target.src || e.target.href;
+            var type = e.target.tagName.toLowerCase();
+            var errorTypeMap = {
+              'script': 'ScriptLoadError',
+              'link': 'StylesheetLoadError',
+              'img': 'ImageLoadError',
+              'audio': 'AudioLoadError',
+              'video': 'VideoLoadError'
+            };
+            if (resourceUrl && type === 'script' && isChosenDevice()) {
+              invoke('errorReport', {
+                msg: "\u3010FEResourceError\u3011".concat(location.href, ' ').concat(errorTypeMap[type], ": ").concat(resourceUrl)
+              });
+            }
+          }
+        }, true);
+      })();
+    </script>
+    <script>
+      'use strict';
+      (function() {
+        var CLOSE_ICON = {
+          type: 'close',
+          name: 'close',
+          icon: {
+            dark: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAA+BAMAAACB77V3AAAAJ1BMVEUAAAD///////////////////////////////////////////////+uPUo5AAAADHRSTlMAIN6AYH+PUHBAMJ/n7dQBAAAApUlEQVQ4y+2SvQnDMBhEBUmRdF7Be2QEFxoh6VNkgIzkJis4KKS4oYx5+AfkU+VSVx18vAc6FGpqplxfed+mT2vvvvn9rTjXs375/aS04GpDnpvijA9N8AJwLwC3AnAvALcCcC8A9wJwLwD3Ao/zdt1L905KRXx4KpbwlhEt3jCixRnR44xYwBF4HIHHEVjcC3pwBP+d/w+OYOf/Xx6b/gk1NUdkBJVySmmXpKmIAAAAAElFTkSuQmCC',
+            light: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAA+BAMAAACB77V3AAAAKlBMVEUAAAAzMzMwMDAyMjIzMzMyMjIzMzM0NDQ0NDQ1NTUzMzM0NDQyMjIzMzMlgnSDAAAADXRSTlMAgCDeYI9QcEAwn45wH9ZO/QAAAKRJREFUOMvtkr0JwzAYRBUIJKUWCHgG7+EmfSALZCQ3mSCrCJPOt4sxD/+AfKpc6qqDj/dAh0JNzZz7O+/79GnrXcrvH8WlXvXP7xelFVcb8jwUF3xogheAewG4FYB7AbgVgHsBuBeAewG4F3ict+tXundSKuLDS7GEt4xo8YYRLc6IHmfEAo7A4wg8jsDiXtCDIxgP/j84goP/f3vu+jfU1JyRCZsKTHX+PVLjAAAAAElFTkSuQmCC'
+          },
+          callback: resetStatusAndCloseWebview
+        };
+        var BACK_ICON = {
+          type: 'back',
+          name: 'back',
+          icon: {
+            dark: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAA+BAMAAACB77V3AAAAD1BMVEUAAAD///////////////+PQt5oAAAABHRSTlMAoF9gGnobOQAAAD1JREFUOMtjGAXDDTAr4JcXccIrzeiCX17ERQC/dsdR7QOinRmonZA8JeYzMI4aMCgMcCIzfyPKh1EwXAAARwAPCSq8C3kAAAAASUVORK5CYII=',
+            light: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAA+BAMAAACB77V3AAAAFVBMVEUAAAAAAAAAAAAAAAAAAAAJCQksLCx/qMReAAAABXRSTlMAn6BfYI6hiuAAAABHSURBVDjLYxgFww2wGOCXFw3GK80Yhl9eNFUBv/agUe0Dop0FqB2/fCD+hKGaKoBXnmnUADoYIJoqQF7+RORvguXDKBguAABKERQskNtLkgAAAABJRU5ErkJggg=='
+          },
+          callback: goBack
+        };
+        var SHARE_ICON = {
+          type: 'share',
+          name: 'share',
+          icon: {
+            dark: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAA+CAMAAABEH1h2AAAANlBMVEUAAAD////////////////////////////////////////////////////////////////////xY8b8AAAAEXRSTlMAEN+A778gQM9foHBPkG+vMCm1bu8AAAEPSURBVEjH7ZTNQsMgEAaz/AdodN7/ZQUk1pNttuqJuSyHTLJhP9gWi8VfINZD2pV2MAxMUOmGiRGFvQNWpPSi0BOUXi14hQ5IrwL8tx5v5z8fkK65cngGRcS2sj/Kh4GU53zfraPjmJgHI5oPutK79p/rW3wyNgdflPnhZGW8N4Fvy58IzTBRtmqY+Lg9Tz5TKcN3Vq6mq85hNTkq4tGLNiCA3Jeaczk7rpAu6/b71uXLurjm101is6mqe+FOue6XM7RGd7OEnMBYCdPXIgl4k03NDUhB71vAvOp7h991fnU09JtYmESV7iFLyOBVOhDG8XUq3Y0jHAB180HUzUcmu370r6R/9zgft8Vi8Qt8ALcEEz+7RwXCAAAAAElFTkSuQmCC',
+            light: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAA+CAMAAABEH1h2AAAAM1BMVEUAAAAwMDAyMjIyMjIzMzMwMDA0NDQyMjIyMjIyMjI0NDQyMjIzMzMzMzMzMzMzMzMzMzN2o6LHAAAAEHRSTlMAEN/vvyA/f89wgF+gT5Cv/dKoewAAARRJREFUSMftlEl2xCAMRJERs+nU/U8bhWA7q3S7XtIr/sJo4f+YSrjFYvEfSFIgN9IOGwZboHSzpy+E3UysIsWGROgZKM5IgBI6AHGGWPFuPT6OPRcg33OlKAZFJNnQnuVjsyn2MCdOfrj+vLgnVzR/9OVL1u/6EV+MTcFJmRPnKs5oGVArfyOYsUVx/UyZRvc6+5FKGb6vcjddfZ6ZyZGIh33pgJgjV8n05Vxxv50vI/08uv22Lt787iSajU69Cxflvl+O0G7cyxL2DGxVwvRZJJv/IY7mYX4OvF+vFuV99dDG+d3D4A+xYBIpXS28EnZAKR1AGO3rKd2PFg4A6MUHoRcfMWn81RvVkTSF1+gWi8Uf8An1MhKOzmcqbwAAAABJRU5ErkJggg=='
+          },
+          callback: share
+        };
+        var EMPTY_ICON = {
+          type: 'empty',
+          name: 'empty',
+          icon: {
+            dark: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAA+AQMAAABJDzoHAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAA5JREFUKM9jGAWjgGgAAAIuAAE/xP4SAAAAAElFTkSuQmCC',
+            light: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAA+AQMAAABJDzoHAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAA5JREFUKM9jGAWjgGgAAAIuAAE/xP4SAAAAAElFTkSuQmCC'
+          },
+          callback: function callback() {}
+        };
+        var ICON_MAP = {
+          share: SHARE_ICON
+        };
+        if (top.window && top.window.cyclopes) {
+          SHARE_ICON.callback = function() {};
+          EMPTY_ICON.icon = BACK_ICON.icon;
+        }
+        var shouldNotWork = !(/moutaiapp/i.test(navigator.userAgent)) && !(top.window && top.window.cyclopes);
+        var customHeader = {
+          isEnvReady: false,
+          totalHeight: 0,
+          contentHeight: 0,
+          safeHeight: 0,
+          leftIcon: [],
+          rightIcon: [],
+          cbQueue: [],
+          shouldRenderHeader: false,
+          isBlockInsert: false,
+          init: function init() {
+            var _this = this;
+            if (shouldNotWork) {
+              return;
+            }
+            getAppInfo(function(appInfo) {
+              if (appInfo && appInfo.env && appInfo.env.fullScreen) {
+                _this.shouldRenderHeader = true;
+                _this.appInfo = appInfo.env;
+                _this.initVariables(appInfo.env);
+                invoke('disableBounce', {});
+                _this.checkBody(function() {
+                  _this.insertPlaceholderBlock();
+                });
+                _this.setLeftIcon();
+                _this.customHeaderAction();
+              } else {
+                _this.customHeaderAction();
+              }
+            });
+          },
+          checkBody: function checkBody(cb) {
+            var self = this;
+            var countdown = null;
+            if (requestAnimationFrame) {
+              countdown = requestAnimationFrame;
+            } else {
+              countdown = function countdown(cb) {
+                setTimeout(cb, 16);
+              };
+            }
+            countdown(function() {
+              if (document.body) {
+                cb();
+              } else {
+                countdown(self.checkBody);
+              }
+            });
+          },
+          getEventEmitter: function getEventEmitter() {
+            if (!window.EventEmitter) {
+              return {
+                emit: function emit() {},
+                on: function on() {}
+              };
+            }
+            !this.ee && (this.ee = new window.EventEmitter());
+            return this.ee;
+          },
+          initVariables: function initVariables(env) {
+            this.totalHeight = env.safeAreaNavigationBar + env.safeAreaStatusBar;
+            this.contentHeight = env.safeAreaNavigationBar;
+            this.safeHeight = env.safeAreaStatusBar;
+          },
+          addCustomHeaderCb: function addCustomHeaderCb(cb) {
+            if (shouldNotWork) {
+              typeof cb == 'function' && cb();
+              return;
+            }
+            if (!this.isEnvReady) {
+              this.cbQueue.push(cb);
+            } else {
+              typeof cb == 'function' && cb();
+            }
+          },
+          customHeaderAction: function customHeaderAction() {
+            this.isEnvReady = true;
+            while (this.cbQueue.length) {
+              var cb = this.cbQueue.shift();
+              typeof cb == 'function' && cb();
+            }
+          },
+          insertPlaceholderBlock: function insertPlaceholderBlock() {
+            var self = this,
+              env = this.appInfo;
+            try {
+              if (self.isBlockInsert) {
+                return;
+              }
+              self.isBlockInsert = true;
+              var container = document.createElement('div');
+              var headerStyle = 'height:' + (env.safeAreaNavigationBar + env.safeAreaStatusBar) + 'px;z-index:99;';
+              switch (+window.headerType) {
+                case 1:
+                  headerStyle += 'position:relative;';
+                  break;
+                case 2:
+                  headerStyle += 'position:fixed;left:0;top:0;width:100%;';
+                  break;
+                default:
+                  headerStyle += 'position:relative;';
+              }
+              container.style = headerStyle;
+              container.id = 'header_placeholder';
+              var parent = document.body;
+              console.log('document.body', parent);
+              console.log('document.body.childNodes[0]', parent.childNodes[0]);
+              parent.insertBefore(container, parent.childNodes[0]);
+              console.log('【customHeader】成功插入自定义头占位块');
+            } catch (e) {
+              console.log(e);
+              self.isBlockInsert = false;
+              console.warn('【customHeader】自定义头占位块插入失败');
+            }
+          },
+          setLeftIcon: function setLeftIcon() {
+            this.leftIcon = [EMPTY_ICON];
+            console.log('【customHeader】左边icon:', this.leftIcon);
+          },
+          getContainerId: function getContainerId() {
+            if (!this.isBlockInsert) {
+              this.insertPlaceholderBlock();
+            }
+            return 'header_placeholder';
+          },
+          addRightIcon: function addRightIcon(arr) {
+            var _this2 = this;
+            if (!(Object.prototype.toString.call(arr) == '[object Array]' && arr.length)) {
+              return;
+            }
+            var iconArr = this.rightIcon;
+            arr.forEach(function(item) {
+              if (!item.type || !item.name) {
+                return;
+              }
+              var existIconIndex = iconArr.findIndex(function(icon) {
+                return icon.type == item.type && icon.name == item.name;
+              });
+              if (existIconIndex != -1) {
+                iconArr[existIconIndex] = Object.assign({}, iconArr[existIconIndex], item);
+                _this2.getEventEmitter().emit('setRightIcon', iconArr);
+              } else {
+                if (iconArr.length >= 2) {
+                  iconArr = iconArr.slice(0, 2);
+                  return;
+                }
+                if (item.type == 'custom') {
+                  item.name && item.icon && item.icon.light && item.icon.dark && typeof item.callback == 'function' && iconArr.push(item);
+                } else if (Object.keys(ICON_MAP).includes(item.type)) {
+                  iconArr.push(Object.assign({}, ICON_MAP[item.type], item));
+                }
+                iconArr.sort(function(a, b) {
+                  if (a.type == 'share') {
+                    if (b.type == 'custom' && b.name == 'collect') {
+                      return 1;
+                    } else {
+                      return -1;
+                    }
+                  } else if (a.type == 'custom' && a.name == 'collect') {
+                    return -1;
+                  } else {
+                    return 1;
+                  }
+                });
+                _this2.getEventEmitter().emit('setRightIcon', _this2.rightIcon);
+                console.log('【customHeader】更新右边icon:', _this2.rightIcon);
+              }
+            });
+          },
+          changeStatusBar: function changeStatusBar(type) {
+            setStatusBar(type || 'default');
+            window.onWebViewDidAppear = function() {
+              setStatusBar(type || 'default');
+            };
+          },
+          modifyLeftIcon: function modifyLeftIcon(arr) {
+            var _this3 = this;
+            if (!(Object.prototype.toString.call(arr) == '[object Array]' && arr.length)) {
+              return;
+            }
+            var iconArr = this.leftIcon;
+            arr.forEach(function(item) {
+              if (!item.type || !item.name) {
+                return;
+              }
+              var existIconIndex = iconArr.findIndex(function(icon) {
+                return icon.type == item.type && icon.name == item.name;
+              });
+              if (existIconIndex != -1) {
+                iconArr[existIconIndex] = Object.assign({}, iconArr[existIconIndex], item);
+                _this3.getEventEmitter().emit('setLeftIcon', iconArr);
+                console.log('【customHeader】更新左边icon:', _this3.leftIcon);
+              }
+            });
+          }
+        };
+        customHeader.init();
+        window.psc_custom_header = {
+          get ee() {
+            return customHeader.getEventEmitter();
+          },
+          get contentHeight() {
+            return customHeader.contentHeight;
+          },
+          get totalHeight() {
+            return customHeader.totalHeight;
+          },
+          get safeHeight() {
+            return customHeader.safeHeight;
+          },
+          get leftIcon() {
+            return customHeader.leftIcon;
+          },
+          get rightIcon() {
+            return customHeader.rightIcon;
+          },
+          get shouldRenderHeader() {
+            return customHeader.shouldRenderHeader;
+          },
+          get appInfo() {
+            return customHeader.appInfo;
+          },
+          addCustomHeaderCb: customHeader.addCustomHeaderCb.bind(customHeader),
+          changeStatusBar: customHeader.changeStatusBar.bind(customHeader),
+          getContainerId: customHeader.getContainerId.bind(customHeader),
+          addRightIcon: customHeader.addRightIcon.bind(customHeader)
+        };
+        function ready(cb) {
+          if (window.NEJsbridge) {
+            cb();
+          } else {
+            document.addEventListener('NEJsbridgeReady', cb, false);
+          }
+        }
+        function invoke() {
+          for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+          if (window.WebViewJavascriptBridge) {
+            var _window$WebViewJavasc;
+            return (_window$WebViewJavasc = window.WebViewJavascriptBridge).callHandler.apply(_window$WebViewJavasc, args);
+          } else {
+            ready(function() {
+              var _window$NEJsbridge;
+              (_window$NEJsbridge = window.NEJsbridge).invoke.apply(_window$NEJsbridge, args);
+            });
+          }
+        }
+        function compareAppVersion(compare) {
+          var compareVs = compare.split("."),
+            version = getAppVersion(),
+            currentVs = version.split("."),
+            i = 0;
+          if (compare == version) {
+            return 0;
+          }
+          function checkVersion(i) {
+            if (+compareVs[i] < +currentVs[i]) {
+              return 1;
+            }
+            if (+compareVs[i] > +currentVs[i]) {
+              return -1;
+            }
+            i++;
+            return checkVersion(i);
+          }
+          return checkVersion(i);
+        }
+        function getAppVersion() {
+          var version = navigator.userAgent.toLowerCase().match(/moutaiapp\/(\d+\.\d+\.\d+)/);
+          if (version) {
+            return version[version.length - 1];
+          }
+          return '0.0.0';
+        }
+        function getAppInfo(cb) {
+          if (top.window && top.window.cyclopes) {
+            setTimeout(function() {
+              var res = {
+                env: {
+                  fullScreen: 0
+                }
+              };
+              if ($('.YX_M_F48CCC').size()) {
+                res = {
+                  env: {
+                    fullScreen: 1,
+                    safeAreaStatusBar: 18,
+                    safeAreaNavigationBar: 48
+                  }
+                };
+              }
+              cb(res);
+            }, 1000);
+            return;
+          }
+          if (/android/i.test(navigator.userAgent)) {
+            invoke('appInfo', {}, function(appInfo) {
+              console.log('【customHeader】AppInfo: ', appInfo);
+              try {
+                if (appInfo.code && appInfo.code == 404 && /appConfig=1_1_1/.test(location.href)) {
+                  appInfo = {
+                    env: {
+                      fullScreen: 1,
+                      notchScreen: 1,
+                      safeAreaBottomOffset: 0,
+                      safeAreaNavigationBar: 43,
+                      safeAreaStatusBar: 30
+                    }
+                  };
+                }
+              } catch (e) {}
+              cb(appInfo);
+            });
+          } else {
+            let fallback = {
+              "env": {
+                "screenWidth": 375,
+                "system": "iOS12.0",
+                "version": "1.1.2",
+                "fullScreen": true,
+                "hideNavBarBackBtn": false,
+                "windowHeight": 667,
+                "notchScreen": 0,
+                "screenHeight": 667,
+                "windowWidth": 375,
+                "safeAreaBottomOffset": 0,
+                "safeAreaStatusBar": 20,
+                "safeAreaNavigationBar": 44
+              }
+            }
+            // 兼容低版本可能初始拿不到的情况                
+            cb(window.WebViewJavascriptBridge.appInfo || fallback);
+          }
+        }
+        function resetStatusAndCloseWebview() {
+          if (window.NEJsbridge && typeof window.NEJsbridge.beforeExitWebView == 'function') {
+            if (window.NEJsbridge.beforeExitWebView()) {
+              setStatusBar('default');
+              closeWebview();
+            } else {}
+          } else {
+            setStatusBar('default');
+            closeWebview();
+          }
+        }
+        function setStatusBar(type) {
+          invoke('setStatusBarStyle', {
+            style: type
+          });
+        }
+        function closeWebview() {
+          invoke('exitWebView', {
+            type: 0
+          });
+        }
+        function goBack() {
+          if (history.length > 1) {
+            var currentUrl = location.href;
+            history.go(-1);
+            setTimeout(function() {
+              var newUrl = location.href;
+              if (newUrl == currentUrl) {
+                resetStatusAndCloseWebview();
+              }
+            }, 300);
+          } else {
+            resetStatusAndCloseWebview();
+          }
+        }
+        function share() {
+          invoke('setShareToSNSCallback', {});
+        }
+      })();
+    </script>
+  </head>
+  <body style='margin:0;padding:0;outline:none;'>
+    <button>开启外挂</button>
+    <div id="app" class="g-bd">
+
+      <!--html-content-placeholder-->
+      <div class="g-item-detail">
+        <div class="m-slide-wrap"></div>
+        <div class="m-row">
+          <div class="m-detailBaseInfo">
+            <div class="priceInfo">
+              <div class="unitPrice" style="height: .84rem; display: flex; flex-direction: row; align-items: center;">
+                <div class="skelon" style="width: 30%;"></div>
+              </div>
+            </div>
+            <div class="baseInfo">
+              <div class="name" style="height: .48rem;">
+                <div class="skelon"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="m-row">
+          <div class="m-detail-location">
+            <div class="skelon" style="width: 20%;"></div>
+            <div class="skelon" style="width: 50%;margin-left:.3rem"></div>
+          </div>
+        </div>
+        <div class="m-row">
+          <div class="m-service-agreement">
+            <div class="skelon" style="width: 20%;"></div>
+            <div class="skelon" style="width: 50%;margin-left:.3rem"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      !(function(c, b, d, a) {
+        if (Math.random() <= 0.98) return false; // 开启2%采样
+        function i(k) {
+          var l = document['cookie'];
+          var m = l['split'](';\x20');
+          for (var n = 0x0; n < m['length']; n++) {
+            var o = m[n]['split']('=');
+            if (o[0x0] == k) {
+              return o[0x1];
+            }
+          }
+          return '';
+        }
+        function j(k, l, m) {
+          if (typeof k !== 'string' || typeof l !== 'number' || typeof m !== 'number') {
+            return;
+          }
+          var n = [];
+          m = m <= 0x19 ? m : m % 0x19;
+          for (var o = 0x0; o < k['length']; o++) {
+            var p = k['charCodeAt'](o);
+            p = p * 0x1 ^ l;
+            p = p['toString'](m);
+            n['push'](p);
+          }
+          var q = String['fromCharCode'](m + 0x61);
+          var r = n['join'](q);
+          return r;
+        }
+        c[a] || (c[a] = {});
+        c[a].config = {
+          pid: "iebnke57tk@d9eaa01fc4fdd2d",
+          environment: "online" === "online" ? "prod" : "daily",
+          appType: 'web', // web端
+          imgUrl: 'https://retcode.you.163.com/r.png?', // 上报接口
+          uid: j(i('yx_userid'), 4, 11), // 用于关联mt账号体系
+          ignoreUrlCase: false, // url大小写敏感
+          ignore: {
+            ignoreUrls: [/\/webview\/itemDetail/], // url过滤
+            ignoreResErrors: [ // 过滤资源加载错误
+              function(str) {
+                return true;
+              }
+            ],
+            ignoreErrors: [ // 错误过滤
+              /^Script error\.?$/
+            ]
+          },
+          urlHelper: [/\/$/], // url解析规则（https://help.aliyun.com/document_detail/58655.html#urlhelper）
+          disableHook: true, // 禁用api上报
+          enableSPA: false, // SPA自动解析
+          useFmp: true, // 首屏采集
+          sendResource: false, //  资源上报
+          behavior: true // 用户行为回溯
+        };
+        with(b) with(body) with(insertBefore(createElement("script"), firstChild)) setAttribute("crossorigin", "", src = d)
+      })(window, document, "https://sdk-retcode.you.163.com/retcode/bl.js", "__bl");
+    </script>
+    <script src="https://fe.moutai519.com.cn/mt-frontend/vendor/react.full.min.js"></script>
+    <script src="https://fe.moutai519.com.cn/mt-frontend/vendor/rwa-cache.min.js"></script>
+    <script src="https://fe.moutai519.com.cn/mt-frontend/vendor/feSdkYanxuan-0.0.4.js"></script>
+    <script src="https://fe.moutai519.com.cn/mt-frontend/vendor/jquery.min.js"></script>
+    <script src="https://fe.moutai519.com.cn/mt-frontend/vendor/lazyload.min-0.0.1.js"></script>
+    <script type="text/javascript">
+      window["commonLibTimestamp"] = "1656079071789";
+    </script>
+    <script data-bdms-faccdee21b68="eyJhcHBfa2V5IjoiOTA1OSIsImFwcF92aWV3IjoicHJvbW90ZSIsImJyb3dzZXJfdXJsIjoiaHR0cHM6Ly9zb2ZpcmUuYmFpZHUuY29tL2RhdGEvdWEvYWIuanNvbiIsImZvcm1fZGVzYyI6IiIsInNlbmRfaW50ZXJ2YWwiOjUwLCJzZW5kX21ldGhvZCI6M30=" src="https://sofire.bdstatic.com/js/dfxaf.js"></script>
+    <script src="//fe.moutai519.com.cn/mt-frontend/hxm/mt-wap/mt/item/detail/index-b4671a3d.js"></script>
+  </body>
+</html>
