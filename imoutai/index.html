@@ -1079,7 +1079,7 @@
     </script>
   </head>
   <body style='margin:0;padding:0;outline:none;'>
-    <button style="position: fixed; top: 50%; z-index: 10;">开启外挂</button>
+    <button style="position: fixed; top: 50%; z-index: 10;" id="start-btn">开启外挂</button>
     <div id="app" class="g-bd">
 
       <!--html-content-placeholder-->
@@ -1182,5 +1182,10 @@
     </script>
     <script data-bdms-faccdee21b68="eyJhcHBfa2V5IjoiOTA1OSIsImFwcF92aWV3IjoicHJvbW90ZSIsImJyb3dzZXJfdXJsIjoiaHR0cHM6Ly9zb2ZpcmUuYmFpZHUuY29tL2RhdGEvdWEvYWIuanNvbiIsImZvcm1fZGVzYyI6IiIsInNlbmRfaW50ZXJ2YWwiOjUwLCJzZW5kX21ldGhvZCI6M30=" src="https://sofire.bdstatic.com/js/dfxaf.js"></script>
     <script src="//fe.moutai519.com.cn/mt-frontend/hxm/mt-wap/mt/item/detail/index-b4671a3d.js"></script>
+    <script>
+        $('#start-btn').click(() => {
+            alert('启动！')
+        })
+    </script>
   </body>
 </html>
