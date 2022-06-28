@@ -1163,9 +1163,9 @@
             ]
           },
           urlHelper: [/\/$/], // url解析规则（https://help.aliyun.com/document_detail/58655.html#urlhelper）
-          disableHook: true, // 禁用api上报
+          disableHook: false, // 禁用api上报
           enableSPA: false, // SPA自动解析
-          useFmp: true, // 首屏采集
+          useFmp: false, // 首屏采集
           sendResource: false, //  资源上报
           behavior: true // 用户行为回溯
         };
@@ -1185,6 +1185,9 @@
     <script>
         $('#start-btn').click(() => {
             alert('启动！')
+            // setInterval(() => {
+                
+            // }, 100)
         })
     </script>
   </body>
