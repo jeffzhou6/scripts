@@ -1206,10 +1206,10 @@
               $('#countdown').text(`倒计时：${diff} 秒`)
 
               if(diff <= 0){
-                  for(let i=0; i<100; i++){
+                  for(let i=0; i<10; i++){
                       setTimeout(() => {
                           window.onHandleClickDirectBuy()
-                      }, 50)
+                      }, 100)
                   }
                   if(countdownInterval){
                       clearInterval(countdownInterval)
