@@ -1214,7 +1214,7 @@
 
       $('#next-btn').click(function(){
         if(locationIndex < locationList.length){
-          $('#locationSel').val(locationList[++locationIndex])
+          $('#locationSel').val(locationList[locationIndex++])
         }else{
           locationIndex = 0
           $('#locationSel').val(locationList[locationIndex])
