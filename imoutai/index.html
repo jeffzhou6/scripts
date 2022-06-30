@@ -1247,7 +1247,7 @@
               let diff = (killTime - current) / 1000
               $('#countdown').text(`倒计时：${diff} 秒`)
 
-              if(diff <= 200){
+              if(killTime - current <= 200){
                   for(let i=0; i<5; i++){
                       setTimeout(() => {
                           window.onHandleClickDirectBuy()
