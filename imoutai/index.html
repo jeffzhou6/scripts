@@ -1084,8 +1084,7 @@
     </div>
     <div style="position: fixed; top: 50%; z-index: 10;">
       <select id="locationSel">
-        <option value="" selected="selected">请选择门店</option>
-        <option value="144440424002">情侣路</option>
+        <option value="144440424002" selected="selected">情侣路</option>
         <option value="144440400007">横琴路</option>
         <option value="144440400004">白蕉路</option>
         <option value="144440400005">翠微路</option>
@@ -1210,7 +1209,10 @@
         "144440400005",
         "144440400006",
       ]
+
       let locationIndex = 0
+
+      window.shopId = $('#locationSel').val(locationList[locationIndex])
 
       $('#next-btn').click(function(){
         if(locationIndex < locationList.length){
@@ -1219,6 +1221,7 @@
           locationIndex = 0
           $('#locationSel').val(locationList[locationIndex])
         }
+        window.shopId = $('#locationSel').val()
         // 打开立即购买弹窗
         window.onHandleClickDirectBuy()
       })
