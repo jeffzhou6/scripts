@@ -1216,11 +1216,10 @@
 
       $('#next-btn').click(function(){
         if(locationIndex < locationList.length){
-          locationIndex++
+            $('#locationSel').val(locationList[++locationIndex])
         }else{
-          locationIndex = 0
+          locationIndex=0
         }
-        $('#locationSel').val(locationList[locationIndex])
         window.shopId = locationList[locationIndex]
         // 打开立即购买弹窗
         window.onHandleClickDirectBuy()
