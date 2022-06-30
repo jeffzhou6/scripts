@@ -1239,8 +1239,8 @@
           // 打开立即购买弹窗
           window.onHandleClickDirectBuy()
 
-          // 下午三点
-          let killTime = dayjs(new Date()).hour(15).minute(0).second(0).valueOf()
+          // 整点
+          let killTime = dayjs(new Date()).hour(dayjs().hour() + 1).minute(0).second(0).valueOf()
 
           countdownInterval = setInterval(() => {
               let current = dayjs(new Date()).valueOf()
