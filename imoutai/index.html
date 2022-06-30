@@ -1216,13 +1216,16 @@
 
       $('#next-btn').click(function(){
         if(locationIndex < locationList.length){
-            $('#locationSel').val(locationList[++locationIndex])
-        }else{
-          locationIndex=0
+            locationIndex++
         }
+        $('#locationSel').val(locationList[locationIndex])
         window.shopId = locationList[locationIndex]
         // 打开立即购买弹窗
         window.onHandleClickDirectBuy()
+
+        if(locationIndex + 1 >= locationList.length){
+          locationIndex = 0
+        }
       })
 
       $('#locationSel').change(function(){
