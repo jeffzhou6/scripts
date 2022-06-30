@@ -1079,6 +1079,9 @@
     </script>
   </head>
   <body style='margin:0;padding:0;outline:none;'>
+    <div style="position: fixed; top: 40%; z-index: 10;">
+      <button id="countdown"></button>
+    </div>
     <div style="position: fixed; top: 50%; z-index: 10;">
       <select id="locationSel">
         <option value="" selected="selected">请选择门店</option>
@@ -1088,8 +1091,8 @@
         <option value="144440400005">翠微路</option>
         <option value="144440400006">仙桥路</option>
       </select>
-      <button id="countdown"></button>
       <button id="start-btn">开启外挂</button>
+      <button id="next-btn">下一家店</button>
     </div>
 
     <div id="app" class="g-bd">
@@ -1200,28 +1203,25 @@
     <script>
       let countdownInterval = null
 
-      const locationList = {
-        "144440424002": {
-            "name": "情侣路",
-            "shopId": "144440424002",
-        },
-        "144440400007": {
-            "name": "横琴路",
-            "shopId": "144440400007",
-        },
-        "144440400004": {
-            "name": "白蕉路",
-            "shopId": "144440400004",
-        },
-        "144440400005": {
-            "name": "翠微路",
-            "shopId": "144440400005",
-        },
-        "144440400006": {
-            "name": "仙桥路",
-            "shopId": "144440400006",
+      const locationList = [
+        "144440424002",
+        "144440400007",
+        "144440400004",
+        "144440400005",
+        "144440400006",
+      ]
+      let locationIndex = 0
+
+      $('#next-btn').click(function(){
+        if(locationIndex < locationList.length){
+          $('#locationSel').val(locationList[++locationIndex])
+        }else{
+          locationIndex = 0
+          $('#locationSel').val(locationList[locationIndex])
         }
-      }
+        // 打开立即购买弹窗
+        window.onHandleClickDirectBuy()
+      })
 
       $('#locationSel').change(function(){
          window.shopId = $(this).val()
