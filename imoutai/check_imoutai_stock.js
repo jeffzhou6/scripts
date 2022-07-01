@@ -64,7 +64,6 @@ function getStockInfo(shopInfo){
                     `${$.name} ${shopInfo.name} ⏰ 库存补货！`,
                 );
             }
-            $.wait(50).then(() => $.log("等待1s"));
             resolve(response)
         });
     })
@@ -82,7 +81,7 @@ function getStockInfo(shopInfo){
         }).then(() => {
            resolve()
         })
-    })
+    }).then()
   }
 })().then(() => {
     $.done()
