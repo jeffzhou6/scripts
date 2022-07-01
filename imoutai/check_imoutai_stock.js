@@ -70,34 +70,18 @@ function getStockInfo(shopInfo){
 }
 
 
-function pushNotice(shopInfo){
-  const url = `https://api2.pushdeer.com/message/push?pushkey=PDU12785TStrw2b9cqjgesrwi5XPi6acmlzSBnHGQ&text=${shopInfo.name} 库存补货`;
-  const method = `GET`;
-
-  const myRequest = {
-      url: url,
-      method: method,
-      body: ``,
-      headers: {
-        'X-Requested-With' : `XMLHttpRequest`,
-        'Content-Type' : `application/json`,
-        'User-Agent' : `Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 moutaiapp/1.2.3 device-id/2c767877412325bb20c8621da60666d6`,
-      }
-  };
-
-  return new Promise((resolve) => {
-      $task.fetch(myRequest).then(response => {
-          resolve(response)
-      });
-  })
-}
-
 ;(async () => {
   $.log('', `🔔 ${$.name}, 开始!`, '')
   for(let i=0; i<locationList.length; i++){
-     const item = locationList[i]
-     await getStockInfo(item).then()
-     await pushNotice(item).then()
+      const item = locationList[i]
+      await getStockInfo(item).then()
+
+      $task.fetch({
+        method: "GET",
+        url: `https://api2.pushdeer.com/message/push?pushkey=PDU12785TStrw2b9cqjgesrwi5XPi6acmlzSBnHGQ&text=${item.name} 库存补货`
+      }).then(_ => {
+        $done();
+      });
   }
 })().then(() => {
     $.done()
