@@ -59,7 +59,7 @@ function getStockInfo(shopInfo){
     return new Promise((resolve) => {
         $task.fetch(myRequest).then(response => {
             const data = JSON.parse(response.body)
-            if(data.data.purchaseInfo.inventory >= 0){
+            if(data.data.purchaseInfo.inventory > 0){
                 $.notify(
                     `${$.name} ${shopInfo.name} ⏰ 库存补货！`,
                 );
