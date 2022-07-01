@@ -60,12 +60,6 @@ function getStockInfo(shopInfo){
         $task.fetch(myRequest).then(response => {
             const data = JSON.parse(response.body)
             if(data.data.purchaseInfo.inventory > 0){
-                $task.fetch({
-                  url: `https://api2.pushdeer.com/message/push?pushkey=PDU12785TStrw2b9cqjgesrwi5XPi6acmlzSBnHGQ&text=${$.name}: ${shopInfo.name} 库存补货！`,
-                  method: "GET", 
-                }).then(() => {
-
-                })
                 $.notify(
                     `${$.name} ${shopInfo.name} ⏰ 库存补货！`,
                 );
@@ -81,6 +75,14 @@ function getStockInfo(shopInfo){
   for(let i=0; i<locationList.length; i++){
      const item = locationList[i]
      await getStockInfo(item).then()
+     await new Promise((resolve) => {
+        $task.fetch({
+          url: `https://api2.pushdeer.com/message/push?pushkey=PDU12785TStrw2b9cqjgesrwi5XPi6acmlzSBnHGQ&text=${$.name}: ${item.name} 库存补货！`,
+          method: "GET", 
+        }).then(() => {
+           resolve()
+        })
+    })
   }
 })().then(() => {
     $.done()
