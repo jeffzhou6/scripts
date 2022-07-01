@@ -1,4 +1,4 @@
-const $ = new Env('茅台100ml库存监控')
+const $ = new Env('[i茅台] 库存监控')
 
 const locationList = [
   {
@@ -23,19 +23,13 @@ const locationList = [
   }
 ]
 
-!(async () => {
+!(() => {
   $.log('', `🔔 ${$.name}, 开始!`, '')
   locationList.map(item => {
-      await getStockInfo(item)
+      getStockInfo(item)
   })
+  $.done()
 })()
-.catch((e) => {
-    $.log(`❌ ${$.name}, 失败! 原因: ${e}!`)
-})
-.finally(() => {
-    $.done()
-})
-
 
 function getStockInfo(shopInfo){
   const url = `https://h5.moutai519.com.cn/xhr/front/mall/item/purchaseInfo`;
@@ -64,13 +58,13 @@ function getStockInfo(shopInfo){
       headers: headers,
       body: body
   };
-  return new Promise((resolve, reject) => {
-    $.post(myRequest, (err, resp, data) => {
-        $.log("err", JSON.stringify(err))
-        $.log("resp", JSON.stringify(resp))
-        $.log("data", JSON.stringify(data))
-        resolve(data)
-    })
+  $.post(myRequest, (err, resp, data) => {
+    if(data.purchaseInfo.inventory >= 0){
+      $.notify(
+        `[i茅台] ${shopInfo.name}`,
+        `⏰ 库存补货！！！`,
+      );
+    }
   })
 }
 
