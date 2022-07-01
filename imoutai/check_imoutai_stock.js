@@ -66,15 +66,11 @@ function getStockInfo(shopInfo){
       headers: headers,
       body: body
   };
-
-  $task.fetch(myRequest).then(response => {
-      console.log(response.statusCode + "\n\n" + response.body);
-      console.log(typeof(response.body))
-      $done();
-  }, reason => {
-      console.log(reason.error);
-      $done();
-  });
+  $.post(myRequest, (err, resp, data) => {
+     $.log("err", JSON.stringify(err))
+     $.log("resp", JSON.stringify(resp))
+     $.log("data", JSON.stringify(data))
+  })
 }
 
 // prettier-ignore
