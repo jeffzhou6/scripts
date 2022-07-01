@@ -69,19 +69,29 @@ function getStockInfo(shopInfo){
     })
 }
 
+
+function pushNotice(shopInfo){
+  const url = `https://api2.pushdeer.com/message/push?pushkey=PDU12785TStrw2b9cqjgesrwi5XPi6acmlzSBnHGQ&text=${shopInfo.name} 库存补货`;
+  const method = `GET`;
+
+  const myRequest = {
+      url: url,
+      method: method,
+  };
+
+  return new Promise((resolve) => {
+      $task.fetch(myRequest).then(response => {
+          resolve(response)
+      });
+  })
+}
+
 ;(async () => {
   $.log('', `🔔 ${$.name}, 开始!`, '')
   for(let i=0; i<locationList.length; i++){
      const item = locationList[i]
      await getStockInfo(item).then()
-     await new Promise((resolve) => {
-        $task.fetch({
-          url: `https://api2.pushdeer.com/message/push?pushkey=PDU12785TStrw2b9cqjgesrwi5XPi6acmlzSBnHGQ&text=${$.name}: ${item.name} 库存补货！`,
-          method: "GET", 
-        }).then(() => {
-           resolve()
-        })
-    }).then()
+     await pushNotice(item).then()
   }
 })().then(() => {
     $.done()
