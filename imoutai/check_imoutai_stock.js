@@ -60,24 +60,29 @@ function getStockInfo(shopInfo){
         $task.fetch(myRequest).then(response => {
             const data = JSON.parse(response.body)
             if(data.data.purchaseInfo.inventory > 0){
-                $.notify(
-                    `${$.name} ${shopInfo.name} ⏰ 库存补货！`,
-                );
-                
-                $.wait(1000).then(() => {
-                    $.http.get(`https://api2.pushdeer.com/message/push?pushkey=PDU12785TStrw2b9cqjgesrwi5XPi6acmlzSBnHGQ&text=${$.name}: ${shopInfo.name} 库存补货！`).then()
-                })
             }
-            resolve(response)
+            resolve(data)
         });
     })
+}
+
+function sendNotify(shopInfo){
+  return new Promise((resolve) => {
+    $.notify(
+      `${$.name} ${shopInfo.name} ⏰ 库存补货！`,
+    );
+    $.http.get(`https://api2.pushdeer.com/message/push?pushkey=PDU12785TStrw2b9cqjgesrwi5XPi6acmlzSBnHGQ&text=${$.name}: ${shopInfo.name} 库存补货！`).then()
+  })
 }
 
 ;(async () => {
   $.log('', `🔔 ${$.name}, 开始!`, '')
   for(let i=0; i<locationList.length; i++){
      const item = locationList[i]
-     await getStockInfo(item).then()
+     let data = await getStockInfo(item)
+     if(data.data.purchaseInfo.inventory >= 0){
+         await sendNotify(item)
+     }
   }
 })().then(() => {
     $.done()
