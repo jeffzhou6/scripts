@@ -3,7 +3,7 @@
  * 
  */
 
- const $ = new API('[i茅台] 库存监控')
+ const $ = new ENV('[i茅台] 库存监控')
 
  const locationList = [
    {
