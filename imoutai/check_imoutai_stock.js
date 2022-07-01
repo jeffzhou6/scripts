@@ -77,6 +77,12 @@ function pushNotice(shopInfo){
   const myRequest = {
       url: url,
       method: method,
+      body: ``,
+      headers: {
+        'X-Requested-With' : `XMLHttpRequest`,
+        'Content-Type' : `application/json`,
+        'User-Agent' : `Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 moutaiapp/1.2.3 device-id/2c767877412325bb20c8621da60666d6`,
+      }
   };
 
   return new Promise((resolve) => {
