@@ -63,13 +63,10 @@ function getStockInfo(shopInfo){
                 $.notify(
                     `${$.name} ${shopInfo.name} ⏰ 库存补货！`,
                 );
-
                 $task.fetch({
                   method: "GET",
                   url: encodeURI(`https://api2.pushdeer.com/message/push?pushkey=PDU12785TStrw2b9cqjgesrwi5XPi6acmlzSBnHGQ&text=${$.name}: ${shopInfo.name} 库存补货!`)
-                }).then(_ => {
-                  $done();
-                });
+                })
             }
             resolve(response)
         });
