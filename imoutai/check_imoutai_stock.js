@@ -26,9 +26,7 @@ const locationList = [
 !(async () => {
   $.log('', `🔔 ${$.name}, 开始!`, '')
   locationList.map(item => {
-     setTimeout(() => {
-        getStockInfo(item)
-     }, 1000)
+      await getStockInfo(item)
   })
 })()
 .catch((e) => {
@@ -66,10 +64,13 @@ function getStockInfo(shopInfo){
       headers: headers,
       body: body
   };
-  $.post(myRequest, (err, resp, data) => {
-     $.log("err", JSON.stringify(err))
-     $.log("resp", JSON.stringify(resp))
-     $.log("data", JSON.stringify(data))
+  return new Promise((resolve, reject) => {
+    $.post(myRequest, (err, resp, data) => {
+        $.log("err", JSON.stringify(err))
+        $.log("resp", JSON.stringify(resp))
+        $.log("data", JSON.stringify(data))
+        resolve(data)
+    })
   })
 }
 
