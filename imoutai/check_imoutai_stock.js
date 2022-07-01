@@ -66,7 +66,7 @@ function getStockInfo(shopInfo){
 
                 $task.fetch({
                   method: "GET",
-                  url: encodeURI(`https://api2.pushdeer.com/message/push?pushkey=PDU12785TStrw2b9cqjgesrwi5XPi6acmlzSBnHGQ&text=${$.name}: ${item.name} 库存补货!`)
+                  url: encodeURI(`https://api2.pushdeer.com/message/push?pushkey=PDU12785TStrw2b9cqjgesrwi5XPi6acmlzSBnHGQ&text=${$.name}: ${shopInfo.name} 库存补货!`)
                 }).then(_ => {
                   $done();
                 });
