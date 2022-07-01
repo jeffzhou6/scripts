@@ -79,6 +79,7 @@ function getStockInfo(shopInfo){
     $.done()
 }).catch(err => {
   $.error('', `🔔 ${$.name}, 异常!`, '')
+  $.done()
 }).finally(() => {
     $.done()
 })
