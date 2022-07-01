@@ -3,7 +3,7 @@
  * 
  */
 
- const $ = new API('[i茅台] 库存监控')
+ const $ = API("[i茅台] 库存监控", true)
 
  const locationList = [
    {
@@ -60,9 +60,8 @@ function getStockInfo(shopInfo){
         $task.fetch(myRequest).then(response => {
             const data = JSON.parse(response.body)
             if(data.data.purchaseInfo.inventory >= 0){
-                $.notify('',
-                    `[i茅台] ${shopInfo.name}`,
-                    `⏰ 库存补货！！！`,
+                $.notify(
+                    `${$.name} ${shopInfo.name} ⏰ 库存补货！`,
                 );
             }
             resolve(response)
@@ -74,13 +73,12 @@ function getStockInfo(shopInfo){
   $.log('', `🔔 ${$.name}, 开始!`, '')
   for(let i=0; i<locationList.length; i++){
      const item = locationList[i]
-     await getStockInfo(item).then(res => {
-        
-     })
+     await getStockInfo(item).then()
   }
-})().catch(err => {
-    $.error('', `🔔 ${$.name}, 异常!`, err)
+})().then(() => {
     $.done()
+}).catch(err => {
+  $.error('', `🔔 ${$.name}, 异常!`, '')
 }).finally(() => {
     $.done()
 })
